@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="./index.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         .elixir-logo {
+        max-height: 140px; /* Adjusts the logo size */
+        width: 140px;
+        color:crimson;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            /* color: rgb(168, 14, 14); */
+            color:crimson;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: crimson;
+            padding: 15px 0;
+        }
+        .navbar-brand, .nav-link {
+            color: white;
+            font-weight: bold;
+        }
+        .navbar-brand span{
+            color:white!important;
+        }
+        .nav-link:hover {
+            color: #ffcccc !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("https://media.istockphoto.com/id/1320162065/vector/blood-cells-red-erythrocytes.jpg?s=612x612&w=0&k=20&c=rX8kGwiOsHW-V-BOal3Cf6ADKdjx_U5snDdykya0jbs=") no-repeat center center/cover;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            color: white;
+        }
+        .hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.5); */
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: bold;
+            animation: textPop 1.5s ease-in-out;
+        }
+
+        @keyframes textPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 10px auto 20px;
+        }
+
+        .hero .btn {
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            background: red;
+            border: 2px solid white;
+            color: white;
+            transition: all 0.3s;
+            box-shadow: 10px 4px 55px rgba(233, 45, 28, 0.6);
+        }
+
+        .hero .btn:hover {
+            background: white;
+            color: crimson;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="height:80px ;">
+        <div class="container">
+            
+            <!-- <a class="navbar-brand" href="#hero">ELIXIR</a> -->
+            <a class="navbar-brand d-flex align-items-center" href="./index.html">
+                <img src="./images/elixir-text.png" alt="Elixir Logo" class="elixir-logo" >
+                <span class="ms-2" style="font-size: 30px;" >ELIXIR'25</span>
+            </a>
+            <!-- <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon open-icon"></span>
+                <span class="close-icon" style="display: none;">&#10005;</span> 
+            </button> -->
+            <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class=" open-icon" style="color:white">&#9776;</span>
+                <span class="close-icon" style="color:white">&#10005;</span> <!-- Unicode for "×" (close icon) -->
+            </span>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="./index.html#checkups">Updates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#donate">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#schedule">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#sponsors">Sponsors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#coordinators">Coordinators</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggler = document.querySelector(".navbar-toggler");
+            const navbarCollapse = document.querySelector("#navbarNav");
+        
+            toggler.addEventListener("click", function () {
+                toggler.classList.toggle("active"); // Smoothly switch icons
+            });
+        
+            // Close menu when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!toggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                    navbarCollapse.classList.remove("show");
+                    toggler.classList.remove("active");
+                }
+            });
+        
+            // Ensure menu closes when Bootstrap hides it
+            navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+                toggler.classList.remove("active");
+            });
+        });
+        </script>
+        
+    <!-- <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggler = document.querySelector(".navbar-toggler");
+            toggler.addEventListener("click", function () {
+                toggler.classList.toggle("active");
+            });
+        });
+        </script> -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="gallery-title">Elixir Gallery</h2>
+            <p class="gallery-subtitle">Memorable moments from our recent donation drives!</p>
+      
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkLRF-ObkGiT1QQ5MMNJLlkFcYLqQKyD37yQ&s" alt="Blood Camp Image 1" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.mypunepulse.com/wp-content/uploads/2023/04/Blood-Donation-PNG-Picture.jpg" alt="Blood Camp Image 2" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i0.wp.com/www.mmumullana.org/wp-content/uploads/2021/06/Blood-Donation-2.jpg?fit=802%2C602&ssl=1" alt="Blood Camp Image 3" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQIZHMVmhtYHHF2CtUZLMa73vLVBvuwXfVmA&s" alt="Blood Camp Image 4" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://i0.wp.com/www.mmumullana.org/wp-content/uploads/2021/06/Blood-Donation-4.jpg?fit=802%2C602&ssl=1" alt="Blood Camp Image 5" onclick="openLightbox(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/f/o/8/large-poster-blood-donation-camp-sl-9495-large-poster-36x24-inch-original-imah3mgyyz7yd5gh.jpeg?q=90&crop=false" alt="Blood Camp Image 6" onclick="openLightbox(this)">
+                </div>
+            </div>
+        </div>
+      </section>
+      
+      <!-- Lightbox for Image Preview -->
+      <!-- <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img id="lightbox-img">
+      </div> -->
+      
+      <!-- CSS for Gallery -->
+      <!-- <style>
+      .gallery-section {
+          background: white; /* Crimson */
+          padding: 50px 0;
+          text-align: center;
+      }
+      
+      .gallery-title {
+          font-size: 2rem;
+          font-weight: bold;
+          color: crimson;
+      }
+      
+      .gallery-subtitle {
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+          color: crimson;
+      }
+      
+      .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 15px;
+          padding: 20px;
+          max-width: 1000px;
+          margin: auto;
+      }
+      
+      .gallery-item img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: transform 0.3s ease-in-out;
+      }
+      
+      .gallery-item img:hover {
+          transform: scale(1.05);
+      }
+      
+      /* Lightbox Styling */
+      .lightbox {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.8);
+          display: none;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+      }
+      
+      .lightbox img {
+          max-width: 90%;
+          max-height: 80%;
+          border-radius: 10px;
+      }
+      
+      .close-btn {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+          font-size: 2rem;
+          color: black;
+          cursor: pointer;
+      }
+      </style> -->
+      <style>
+        /* Gallery Section */
+.gallery-section {
+    background: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.gallery-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: crimson;
+    margin-top: 20px; /* Ensure heading is visible */
+}
+
+.gallery-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: crimson;
+}
+
+/* Improved Grid Layout */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Improved Image Styling */
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+      </style>
+      <!-- JavaScript for Lightbox -->
+      <script>
+      function openLightbox(img) {
+          document.getElementById("lightbox-img").src = img.src;
+          document.getElementById("lightbox").style.display = "flex";
+      }
+      
+      function closeLightbox() {
+          document.getElementById("lightbox").style.display = "none";
+      }
+
+      </script>
+       <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

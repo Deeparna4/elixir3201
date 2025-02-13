@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elixir</title>
+    <link rel="stylesheet" href="./index.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .elixir-logo {
+        max-height: 140px; 
+        width: 140px;
+        color:crimson;
+    }
+        body {
+            font-family: Arial, sans-serif;
+            background: white;
+            color:crimson;
+        }
+        .navbar {
+            background: white;
+            padding: 15px 0;
+        }
+        .navbar-brand, .nav-link {
+            color: crimson !important;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            color: #ffcccc !important;
+        }
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url("https://media.istockphoto.com/id/1320162065/vector/blood-cells-red-erythrocytes.jpg?s=612x612&w=0&k=20&c=rX8kGwiOsHW-V-BOal3Cf6ADKdjx_U5snDdykya0jbs=") no-repeat center center/cover;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+            color: white;
+        }
+        .hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            font-weight: bold;
+            animation: textPop 1.5s ease-in-out;
+        }
+
+        @keyframes textPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 10px auto 20px;
+        }
+
+        .hero .btn {
+            font-size: 1.2rem;
+            padding: 10px 25px;
+            background: red;
+            border: 2px solid white;
+            color: white;
+            transition: all 0.3s;
+            box-shadow: 10px 4px 55px rgba(233, 45, 28, 0.6);
+        }
+
+        .hero .btn:hover {
+            background: white;
+            color: crimson;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="height:80px;">
+        <div class="container">
+            
+            <!-- <a class="navbar-brand" href="#hero">ELIXIR</a> -->
+            <a class="navbar-brand d-flex align-items-center" href="#hero">
+                <img src="./images/elixir-final.png" alt="Elixir Logo" class="elixir-logo" >
+                <span class="ms-2" style="font-size: 30px;">ELIXIR'25</span>
+            </a>
+            <!-- <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon open-icon"></span>
+                <span class="close-icon" style="display: none;">&#10005;</span> 
+            </button> -->
+            <span class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class=" open-icon" style="color:crimson">&#9776;</span>
+                <span class="close-icon" style="color:crimson">&#10005;</span> <!-- Unicode for "×" (close icon) -->
+            </span>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#checkups">Updates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#donate">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#schedule">Schedule</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#coordinators">Coordinators</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggler = document.querySelector(".navbar-toggler");
+            const navbarCollapse = document.querySelector("#navbarNav");
+        
+            toggler.addEventListener("click", function () {
+                toggler.classList.toggle("active"); // Smoothly switch icons
+            });
+        
+            // Close menu when clicking outside
+            document.addEventListener("click", function (event) {
+                if (!toggler.contains(event.target) && !navbarCollapse.contains(event.target)) {
+                    navbarCollapse.classList.remove("show");
+                    toggler.classList.remove("active");
+                }
+            });
+        
+            // Ensure menu closes when Bootstrap hides it
+            navbarCollapse.addEventListener("hidden.bs.collapse", function () {
+                toggler.classList.remove("active");
+            });
+        });
+        </script>
+        
+ 
+    <header class="hero" id="hero">
+        <div class="container text-center">
+            <h1>"Your blood donation is the lifeline for those in need."</h1>
+            <p>Blood donation saves lives, improves heart health, reduces harmful iron stores, boosts new blood cell production, and fosters a sense of goodwill.</p>
+            <a href="#donate" class="btn btn-lg">Donate Now!</a>
+        </div>
+    </header>
+
+<section class="counter-section text-center" id="checkups">
+  <div class="container">
+      <div class="row">
+          
+    <div class="col-md-4">
+        <div class="counter-box">
+            <div class="progress-ring">
+                <svg width="120" height="120">
+                    <circle class="progress-background" cx="60" cy="60" r="50"></circle>
+                    <circle id="bloodDonationCircle" class="progress-circle" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <h2 class="counter"><span id="registrationCount" data-count="0">0</span><span id="countSpinner0" class="loading-spinner" style="display: none;"></span></h2>
+            </div>
+            <p>Donors Registered</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="counter-box">
+            <div class="progress-ring">
+                <svg width="120" height="120">
+                    <circle class="progress-background" cx="60" cy="60" r="50"></circle>
+                    <circle id="bcCircle" class="progress-circle" cx="60" cy="60" r="50"></circle>
+                </svg>
+                <h2 class="counter"><span id="bc" data-count="0">0</span><span id="countSpinner1" class="loading-spinner" style="display: none;"></span></h2>
+            </div>
+            <p>Blood units collected</p>
+        </div>
+    </div>
+<div class="col-md-4">
+    <div class="counter-box">
+        <div class="progress-ring">
+            <svg width="120" height="120">
+                <circle class="progress-background" cx="60" cy="60" r="50"></circle>
+                <circle id="ophthalmicCircle" class="progress-circle" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+            </svg>
+            <h2 class="counter"><span id="ophthalmicAid" data-count="0">0</span><span id="countSpinner2" class="loading-spinner" style="display: none;"></span></h2>
+        </div>
+        <p>Ophthalmic Aid</p>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="counter-box">
+        <div class="progress-ring">
+            <svg width="120" height="120">
+                <circle class="progress-background" cx="60" cy="60" r="50"></circle>
+                <circle id="gbcCircle" class="progress-circle" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314"></circle>
+            </svg>
+            <h2 class="counter"><span id="gbc" data-count="0">0</span><span id="countSpinner3" class="loading-spinner" style="display: none;"></span></h2>
+        </div>
+        <p>General Body Checkup</p>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="counter-box">
+        <div class="progress-ring">
+            <svg width="120" height="120">
+                <circle class="progress-background" cx="60" cy="60" r="50"></circle>
+                <circle id="dcCircle" class="progress-circle" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <h2 class="counter"><span id="dc" data-count="0">0</span><span id="countSpinner4" class="loading-spinner" style="display: none;"></span></h2>
+        </div>
+        <p>Dental Care</p>
+    </div>
+</div>
+
+      </div>
+  </div>
+</section>
+<style>
+    /* Small Spinner for Counter */
+#countSpinner {
+    width: 15px;
+    height: 15px;
+    border-width: 2px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+  .counter-section {
+      background: white;
+      color: crimson;
+      padding: 60px 0;
+  }
+
+  .counter-box {
+      text-align: center;
+      margin-bottom: 30px;
+  }
+
+  .progress-ring {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: auto;
+  }
+
+  svg {
+      transform: rotate(-90deg);
+  }
+
+  .progress-background {
+      fill: none;
+      stroke: #ddd;
+      stroke-width: 8;
+  }
+
+  .progress-circle {
+      fill: none;
+      stroke: crimson;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 314;
+      stroke-dashoffset: 314;
+      transition: stroke-dashoffset 1s ease-out; /* Faster */
+  }
+
+  .progress-ring h2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0;
+  }
+
+  .counter-section p {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-top: 15px;
+  }
+</style>
+
+ <script>
+    document.addEventListener("DOMContentLoaded", updateRegistrationCount);
+   
+function updateRegistrationCount() {
+    const countSpinner0 = document.getElementById("countSpinner0");
+    countSpinner0.style.display = "inline-block";
+    let bloodDonationCounter = document.querySelector("#registrationCount");
+    bloodDonationCounter.style.display="none";
+    
+    fetch("https://script.google.com/macros/s/AKfycbx2KLUpMYv03tWH9T_32JEStI8p8Da54AE7orHl4XuK9SIi4WE-LVqXedOnwCmxRia3nw/exec")
+    .then(response => response.json())
+    .then(data => {
+        let count = data.count; // Get count from API
+
+        // Update only the Blood Donation Counter
+        
+        let bloodDonationCircle = document.querySelector("#bloodDonationCircle"); // Ensure this has the correct ID in HTML
+
+        if (bloodDonationCounter && bloodDonationCircle) {
+            bloodDonationCounter.setAttribute("data-count", count);
+            animateCounter(bloodDonationCounter, bloodDonationCircle, count);
+        }
+    })
+    .catch(error => console.error("Error fetching count:", error))
+    .finally(() => {
+        countSpinner0.style.display = "none";
+        bloodDonationCounter.style.display="inline-block"; // Hide spinner after fetching
+    });
+}
+
+function animateCounter(counter, circle, target) {
+    let count = 0;
+    let increment = target / 15;  // Faster counter update
+
+    let interval = setInterval(() => {
+        count += increment;
+        counter.innerText = Math.ceil(count);
+        let percent = count / target;
+        circle.style.strokeDashoffset = 314 - (314 * percent);
+
+        if (count >= target) {
+            clearInterval(interval);
+            counter.innerText = target;  // Ensure final number is exact
+        }
+    }, 15);
+}
+
+
+document.addEventListener("DOMContentLoaded", updateOphthalmicAidCount);
+
+async function updateOphthalmicAidCount() {
+    const countSpinner2 = document.getElementById("countSpinner2");
+    countSpinner2.style.display = "inline-block";
+    let ophthalmicCounter = document.querySelector("#ophthalmicAid");
+    ophthalmicCounter.style.display="none";
+    const url = "https://script.google.com/macros/s/AKfycbwv4E_dpOXTFrAUMyUiYrLzbgSg-R46-VrhUasENSA116RXIza3VBSnLHZVWy37bMg_6w/exec";
+
+    try {
+        const response = await fetch(url); // Removed 'no-cors' for proper response handling
+        const data = await response.json(); // Ensure this returns a valid JSON response
+
+        let count = data.count || 0;
+        console.log(count);
+         // Use 'count' key (ensure API returns it correctly)
+        let ophthalmicCounter = document.querySelector("#ophthalmicAid");
+        let ophthalmicCircle = document.querySelector("#ophthalmicCircle");
+
+        if (ophthalmicCounter && ophthalmicCircle) {
+            ophthalmicCounter.setAttribute("data-count", count);
+            animateCounter(ophthalmicCounter, ophthalmicCircle, count);
+        }
+    } catch (error) {
+        console.error("Error fetching Ophthalmic Aid count:", error);
+    }finally{
+        countSpinner2.style.display = "none";
+        ophthalmicCounter.style.display="inline-block"; // Hide spinner after fetching
+    };
+}
+document.addEventListener("DOMContentLoaded", updateGBCCount);
+
+async function updateGBCCount() {
+    const countSpinner3 = document.getElementById("countSpinner3");
+    countSpinner3.style.display = "inline-block";
+    let gbcCounter = document.querySelector("#gbc");
+    gbcCounter.style.display="none";
+    const url = "https://script.google.com/macros/s/AKfycbxH3HOKNSBmu_-w60DgmulKDmJ9Q-G0irRnjKA_2k15ektNEP28alORN2NIM1kTN7tw/exec";
+
+    try {
+        const response = await fetch(url); // Removed 'no-cors' for proper response handling
+        const data = await response.json(); // Ensure this returns a valid JSON response
+
+        let count = data.count || 0;
+        console.log(count);
+         // Use 'count' key (ensure API returns it correctly)
+        let gbcCounter = document.querySelector("#gbc");
+        let gbcCircle = document.querySelector("#gbcCircle");
+
+        if (gbcCounter && gbcCircle) {
+            gbcCounter.setAttribute("data-count", count);
+            animateCounter(gbcCounter, gbcCircle, count);
+        }
+    } catch (error) {
+        console.error("Error fetching Ophthalmic Aid count:", error);
+    }finally{
+        countSpinner3.style.display = "none";
+        gbcCounter.style.display="inline-block"; // Hide spinner after fetching
+    };
+}
+
+document.addEventListener("DOMContentLoaded", updatedcCount);
+
+async function updatedcCount() {
+    const countSpinner4 = document.getElementById("countSpinner4");
+    countSpinner4.style.display = "inline-block";
+    let dcCounter = document.querySelector("#dc");
+    dcCounter.style.display="none";
+    const url = "https://script.google.com/macros/s/AKfycbxZN_F4MCVn5oIVVs2kkTmIcq0qk4ipNBk4K9emBxwHoJRGwIizZvKXJADOIIwaH1FW/exec";
+
+    try {
+        const response = await fetch(url); // Removed 'no-cors' for proper response handling
+        const data = await response.json(); // Ensure this returns a valid JSON response
+
+        let count = data.count || 0;
+        console.log(count);
+         // Use 'count' key (ensure API returns it correctly)
+        
+        let dcCircle = document.querySelector("#dcCircle");
+
+        if (dcCounter && dcCircle) {
+            dcCounter.setAttribute("data-count", count);
+            animateCounter(dcCounter, dcCircle, count);
+        }
+    } catch (error) {
+        console.error("Error fetching Ophthalmic Aid count:", error);
+    }finally{
+        countSpinner4.style.display = "none";
+        dcCounter.style.display="inline-block"; // Hide spinner after fetching
+    };
+}
+
+document.addEventListener("DOMContentLoaded", updateBloodCount);
+
+async function updateBloodCount() {
+    const countSpinner1 = document.getElementById("countSpinner1");
+    countSpinner1.style.display = "inline-block";
+    let bcCounter = document.querySelector("#bc");
+    bcCounter.style.display="none";
+    const url = "https://script.google.com/macros/s/AKfycbwe4ATJzutUczxYMNPtkpqdOTIuTsnhZmW9cWbd8sz_d3g9QV-wkdyuuO7sh-mcApKL/exec"; // Replace with your deployed Apps Script Web App URL
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        let count = data.bloodUnits || 0;
+        console.log(`Total Blood Units: ${count}`);
+
+        
+        let bcCircle = document.querySelector("#bcCircle");
+
+        if (bcCounter && bcCircle) {
+            bcCounter.setAttribute("data-count", count);
+            animateCounter(bcCounter, bcCircle, count);
+        }
+    } catch (error) {
+        console.error("Error fetching blood units count:", error);
+    }finally{
+        countSpinner1.style.display = "none";
+        bcCounter.style.display="inline-block"; // Hide spinner after fetching
+    };
+}
+
+ </script>
+
+ 
+<section class="donation-form-section" id="donate">
+  <div class="container">
+      <h2 class="form-title">Register for Blood Donation</h2>
+      <p class="form-subtitle">Fill in your details to become a donor and save lives!</p>
+
+      <form id="bloodDonationForm">
+          <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" name="age" placeholder="Enter your age" required>
+          </div>
+
+          <div class="form-group">
+              <label for="bloodGroup">Blood Group</label>
+              <select id="bloodGroup" name="bloodGroup" required>
+                  <option value="" disabled selected>Select Blood Group</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+              </select>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+        </div>
+          <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+          </div>
+
+          <div class="form-group">
+              <label for="email">Email (Optional)</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email">
+          </div>
+
+
+          <div class="form-group">
+
+<div id="loadingSpinner" class="loading-spinner" style="display: none;"></div>
+              <button type="submit" class="submit-btn">Register Now</button>
+          </div>
+      </form>
+  </div>
+</section>
+
+<style>
+  .donation-form-section {
+      /* background: rgb(141, 4, 32); */
+      background:crimson;
+      padding: 50px 0;
+      text-align: center;
+  }
+
+  .form-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ffffff; /* Crimson */
+  }
+
+  .form-subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+  }
+
+  form {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+  }
+
+  label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color:rgb(207, 40, 74);
+  }
+
+  input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  }
+  input:focus, select:focus {
+    border: 2px solid #DC143C; /* Crimson */
+    box-shadow: 0 0 8px rgba(220, 20, 60, 0.5); /* Soft glow */
+    outline: none;
+}
+
+  .submit-btn {
+      background: #DC143C; /* Crimson */
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+  }
+
+  .submit-btn:hover {
+      background: #B22222; /* Firebrick for hover effect */
+  }
+  /* Loading Spinner CSS */
+.loading-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid crimson;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 10px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Disable button when submitting */
+.submit-btn:disabled {
+    background: #B22222;
+    cursor: not-allowed;
+}
+
+</style>
+<script>
+    document.getElementById("bloodDonationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const submitBtn = document.querySelector(".submit-btn");
+    const loadingSpinner = document.getElementById("loadingSpinner");
+    loadingSpinner.style.display = "block";
+    submitBtn.disabled = true;
+
+    fetch("https://script.google.com/macros/s/AKfycbweRQGxyGfkzhYk2pdplqroBcOUyMiBPhXiXn50Vlr2XXKoWFpD0iAiWX63_FtaPRTt-A/exec", {  // Replace with your deployed Apps Script URL
+        method: "POST",
+        body: new URLSearchParams(formData),
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert("Registration Successful!");
+        updateRegistrationCount();
+        form.reset();
+    })
+    .catch(error => console.error("Error:", error))
+    .finally(() => {
+        // Hide spinner and enable button after response
+        loadingSpinner.style.display = "none";
+        submitBtn.disabled = false;
+    });
+});
+
+// Fetch the registration count
+function updateRegistrationCount() {
+    fetch("https://script.google.com/macros/s/AKfycbweRQGxyGfkzhYk2pdplqroBcOUyMiBPhXiXn50Vlr2XXKoWFpD0iAiWX63_FtaPRTt-A/exec") // Replace with your deployed Apps Script URL
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("registrationCount").innerText = data.count;
+    })
+    .catch(error => console.error("Error fetching count:", error));
+}
+
+// Call count function on page load
+document.addEventListener("DOMContentLoaded", updateRegistrationCount);
+
+</script>
+
+<section class="schedule-section" id="schedule">
+    <div class="container">
+        <h2 class="schedule-title">Event Schedule</h2>
+        <p class="schedule-subtitle">Join us for three days of life-saving activities!</p>
+
+        <div class="schedule-grid">
+            <div class="schedule-day">
+                <h3 class="day-title">Day 1 - Registration & Awareness</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Location</th>
+                    </tr>
+                    <tr>
+                        <td>09:00 AM - 10:00 AM</td>
+                        <td>Registration & Welcome</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM - 12:00 PM</td>
+                        <td>Blood Donation Awareness Seminar</td>
+                        <td>Conference Room</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM - 01:00 PM</td>
+                        <td>Lunch Break</td>
+                        <td>Cafeteria</td>
+                    </tr>
+                    <tr>
+                        <td>01:00 PM - 04:00 PM</td>
+                        <td>Preliminary Health Checkups</td>
+                        <td>Medical Booth</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="schedule-day">
+                <h3 class="day-title">Day 2 - Blood Donation Drive</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Location</th>
+                    </tr>
+                    <tr>
+                        <td>09:00 AM - 11:00 AM</td>
+                        <td>Donor Registration & Screening</td>
+                        <td>Medical Booth</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 AM - 03:00 PM</td>
+                        <td>Blood Donation Sessions</td>
+                        <td>Donation Area</td>
+                    </tr>
+                    <tr>
+                        <td>03:00 PM - 04:00 PM</td>
+                        <td>Donor Recognition & Certificates</td>
+                        <td>Main Stage</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="schedule-day">
+                <h3 class="day-title">Day 3 - Health Checkups & Closing</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Location</th>
+                    </tr>
+                    <tr>
+                        <td>09:00 AM - 11:00 AM</td>
+                        <td>Free Medical Checkups</td>
+                        <td>Health Booth</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 AM - 01:00 PM</td>
+                        <td>Blood Donor Stories & Experiences</td>
+                        <td>Conference Hall</td>
+                    </tr>
+                    <tr>
+                        <td>01:00 PM - 02:00 PM</td>
+                        <td>Lunch Break</td>
+                        <td>Cafeteria</td>
+                    </tr>
+                    <tr>
+                        <td>02:00 PM - 04:00 PM</td>
+                        <td>Closing Ceremony & Appreciation</td>
+                        <td>Main Stage</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+   
+.schedule-section {
+    background: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.schedule-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: crimson;
+}
+
+.schedule-subtitle {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: crimson;
+}
+
+.schedule-table {
+    width: 90%; 
+    max-width: 800px; 
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 0.9rem; 
+    background: white;
+}
+
+.schedule-table th,
+.schedule-table td {
+    padding: 8px; 
+    border: 1px solid crimson;
+    text-align: center;
+    background: white; 
+}
+
+.schedule-table th {
+    background: crimson;
+    color: white;
+    font-size: 1rem; 
+}
+
+.schedule-table td {
+    color: black;
+}
+
+.schedule-day {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    width: 90%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.day-title {
+    font-size: 1.3rem;
+    color: crimson;
+    margin-bottom: 10px;
+}
+
+</style>
+
+<section class="sponsors-section" id="sponsors">
+    <div class="container">
+        <h2 class="sponsors-title">Our Proud Sponsors</h2>
+        <p class="sponsors-quote">"Alone we can do so little; together we can do so much." – Helen Keller</p>
+        <p class="sponsors-subtitle">We appreciate the support of our generous sponsors!</p>
+  
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <div class="sponsor-ring">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2560px-Amazon_logo.svg.png" alt="Amazon">
+                </div>
+                <p class="sponsor-name">Amazon</p>
+            </div>
+            <div class="sponsor-item">
+                <div class="sponsor-ring">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1200px-Apple_logo_black.svg.png" alt="Apple">
+                </div>
+                <p class="sponsor-name">Apple</p>
+            </div>
+            <div class="sponsor-item">
+                <div class="sponsor-ring">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+                </div>
+                <p class="sponsor-name">Microsoft</p>
+            </div>
+            <div class="sponsor-item">
+                <div class="sponsor-ring">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_2015_logo.svg" alt="Google">
+                </div>
+                <p class="sponsor-name">Google</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <style>
+  .sponsors-section {
+      background: crimson;
+      padding: 50px 0;
+      text-align: center;
+  }
+  
+  .sponsors-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+  }
+  
+  .sponsors-quote {
+      font-size: 1rem;
+      font-style: italic;
+      color: #fff;
+      margin-bottom: 15px;
+  }
+  
+  .sponsors-subtitle {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 30px;
+  }
+  
+  /* Sponsors Grid */
+  .sponsors-grid {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 20px;
+  }
+  
+  .sponsor-item {
+      text-align: center;
+  }
+  
+  /* Spiral Golden Ring Effect */
+  .sponsor-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #FFD700, #E6B800, #FFD700); /* Spiral Gold Effect */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 10px 10px 100px rgba(242, 226, 2, 0.974); /* Golden Glow */
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .sponsor-ring:hover {
+      transform: scale(1.1);
+  }
+  
+  /* Inner White Circle for Logos */
+  .sponsor-ring::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: inset 0px 12px 12px rgba(245, 245, 2, 0.888);
+  }
+  
+  /* Sponsor Logos */
+  .sponsor-ring img {
+      width: 50px;  /* Adjusted size to fit inside the ring */
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+  }
+  
+  /* Sponsor Name */
+  .sponsor-name {
+      font-size: 1rem;
+      color: #fff;
+      margin-top: 10px;
+      font-weight: 500;
+  }
+  </style>
+
+<section class="coordinators-section" id="coordinators">
+    <div class="container">
+        <h2 class="coordinators-title">Meet Our Coordinators</h2>
+        <p class="coordinators-subtitle">The dedicated minds behind our event's success!</p>
+  
+        <div class="coordinators-grid">
+            <div class="coordinator-item">
+                <div class="coordinator-ring">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="John Doe">
+                </div>
+                <p class="coordinator-name">John Doe</p>
+                <p class="coordinator-role">Event Chair</p>
+            </div>
+            <div class="coordinator-item">
+                <div class="coordinator-ring">
+                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Jane Smith">
+                </div>
+                <p class="coordinator-name">Jane Smith</p>
+                <p class="coordinator-role">Vice Chair</p>
+            </div>
+            <div class="coordinator-item">
+                <div class="coordinator-ring">
+                    <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Alex Brown">
+                </div>
+                <p class="coordinator-name">Alex Brown</p>
+                <p class="coordinator-role">Program Lead</p>
+            </div>
+            <div class="coordinator-item">
+                <div class="coordinator-ring">
+                    <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Emily White">
+                </div>
+                <p class="coordinator-name">Emily White</p>
+                <p class="coordinator-role">Operations Head</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <style>
+  .coordinators-section {
+      background: white;
+      padding: 50px 0;
+      text-align: center;
+  }
+  
+  .coordinators-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: crimson;
+      margin-bottom: 10px;
+  }
+  
+  .coordinators-subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+  }
+
+  .coordinators-grid {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 20px;
+  }
+  
+  .coordinator-item {
+      text-align: center;
+  }
+  
+  .coordinator-ring {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: white; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 4px 35px rgba(233, 45, 28, 0.6); 
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+  }
+  
+  .coordinator-ring:hover {
+      transform: scale(1.1);
+  }
+  
+  
+  .coordinator-ring::before {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: crimson;
+      border-radius: 50%;
+      box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .coordinator-ring img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+  }
+  
+  .coordinator-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: crimson;
+      margin-top: 10px;
+  }
+  
+  .coordinator-role {
+      font-size: 1rem;
+      color: #777;
+  }
+  </style>
+ 
+
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      
+        <div class="footer-slogan">
+            <h2><span class="footer-logo">
+                <img src="https://static.wixstatic.com/media/695198_43e0369775e14605b9b1614db7ca4428~mv2.jpg/v1/crop/x_0,y_19,w_424,h_654/fill/w_59,h_89,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/LOGOKI.jpg" alt="RaC GCT">
+            </span>
+    ROTARACT CLUB OF GCT COIMBATORE</h2>
+            <p>GROW | CULTIVATE | TRANSMUTE</p>
+            <p style="font-size: 13px;">We are dedicated to making a difference through impactful initiatives and community service.</p>
+        </div>
+
+        <div class="footer-contact">
+            <ul>
+                <li><a href="tel:+918015173519" target="_blank"><img src="https://img.icons8.com/ios-filled/25/ffffff/phone.png"> <span>8015173519</span></a> </li>
+                <li><a href="mailto:rotaractgct3201@gmail.com" target="_blank"><img src="https://img.icons8.com/ios-filled/25/ffffff/gmail.png"><span>rotaractgct3201@gmail.com
+                </span></a></li>
+                
+                <li><a href="https://www.rotaractgct.com/" target="_blank"> <img src="https://img.icons8.com/ios-filled/25/ffffff/domain.png"><span>www.rotaractgct.com</span></a></li>
+                <li><a href="https://www.instagram.com/rotaract_gct/" target="_blank"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png"><span>@rotaract_gct
+                </span></a></li>
+                <li><a href="https://www.youtube.com/@rotaractgctcbe/videos" target="_blank"><img src="https://img.icons8.com/ios-filled/25/ffffff/youtube.png"><span>@rotaractgctcbe
+                </span></a></li>
+                
+                
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; ELIXIR'2025 - All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    a{
+        color:inherit;
+        text-decoration: none;
+    }
+    .footer-section {
+        background: crimson; 
+        color: white;
+        padding: 50px 0 20px;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        width: 20px;
+        height: 30px;
+    }
+
+
+    .footer-slogan h2 {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .footer-slogan p {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    .footer-social a {
+        display: inline-block;
+        margin: 10px 15px;
+    }
+
+    .footer-social img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer-contact ul {
+        list-style: none;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .footer-contact ul li {
+        display: inline-block;
+        margin: 10px 15px;
+        font-size: 1rem;
+        color: white;
+    }
+
+    .footer-contact ul li img {
+        vertical-align: middle;
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        padding-top: 15px;
+        font-size: 0.9rem;
+    }
+</style>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

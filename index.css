@@ -304,11 +304,13 @@ margin-bottom: 20px!important;
       margin: 10px 0;
   }
 
-  .footer-slogan p {
+  .footer-slogan .theme {
       font-size: 0.8rem!important;
       letter-spacing: 2px;
   }
-
+.motto{
+    font-size: 0.7rem!important;
+}
   .footer-social a {
       display: inline-block;
       margin: 2px 5px!important;

@@ -40,7 +40,7 @@ height:60px !important;
     .nav-link {
         display: block;
         padding: 8px 8px;
-        font-size: 14px!important;
+        font-size: 15px!important;
         text-align: center;
         color: crimson !important;
         font-weight: bold!important;
@@ -124,14 +124,14 @@ svg circle{
     font-size:18px!important;
 }
 .form-title{
-    font-size:22px!important;
+    font-size:24px!important;
 }
 .form-subtitle{
-    font-size:13px!important;
+    font-size:15px!important;
 }
 
 form {
-    max-width: 290px!important;
+    max-width: 300px!important;
 }
 
 .form-group {
@@ -139,19 +139,19 @@ form {
 }
 
 label{
-    font-size:0.9rem!important;
+    font-size:1rem!important;
 }
 input, select {
     width: 100%;
-    padding: 8px!important;
-    font-size: 0.8rem!important;
+    padding: 10px!important;
+    font-size: 0.9rem!important;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 .submit-btn {
   
-    font-size: 0.9rem!important;
-    padding: 7px!important;
+    font-size: 1rem!important;
+    padding: 8px!important;
     width: 100%;
     transition: 0.3s;
 }
